@@ -1,0 +1,511 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  background: #e1edfa;
+  background: -webkit-gradient(linear, left top, right top, from(#d2e4f7), to(#fce5ef));
+  background: linear-gradient(90deg, #d2e4f7 0%, #fce5ef 100%);
+}
+
+.root {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main {
+  height: 88vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 24px;
+}
+
+main .left,
+main .right {
+  width: 20%;
+  text-align: center;
+}
+
+main .container {
+  width: 60%;
+  height: 100%;
+  background-color: #efeff8;
+  border-radius: 12px;
+  -webkit-box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  padding: 32px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+main .container .searchBar {
+  height: 6%;
+}
+
+main .container .searchBar input {
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: #fff;
+  padding: 9px;
+  border-radius: 12px;
+}
+
+main .container .title {
+  font-size: 24px;
+  text-transform: capitalize;
+  font-weight: 600;
+  padding: 20px 16px;
+}
+
+main .container .topsong {
+  width: 100%;
+  height: 50%;
+  margin-bottom: 12px;
+}
+
+main .container .topsong-wrapper {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+main .container .topsong-wrapper .image {
+  border-radius: 12px;
+  width: 18vw;
+  height: 18vw;
+  overflow: hidden;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+main .container .topsong-wrapper .image.active {
+  border-radius: 50%;
+  -webkit-animation: spin 12s 0s linear infinite;
+          animation: spin 12s 0s linear infinite;
+}
+
+main .container .topsong-wrapper .image.disable {
+  border-radius: 50%;
+  -webkit-animation: spin-reverse 200ms 0s linear;
+          animation: spin-reverse 200ms 0s linear;
+}
+
+main .container .topsong-wrapper .image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+main .container .topsong-list {
+  width: 60%;
+  height: 18vw;
+  overflow-y: auto;
+}
+
+main .container .topsong-item {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 16px;
+  cursor: pointer;
+  -webkit-transition: all 400ms ease;
+  transition: all 400ms ease;
+}
+
+main .container .topsong-item:hover {
+  background-color: var(#fff);
+}
+
+main .container .topsong-item.isPlaying {
+  background-color: #fff;
+  border-radius: 12px;
+}
+
+main .container .topsong-item .order {
+  color: #333;
+  width: 20px;
+  height: 20px;
+}
+
+main .container .topsong-item .order img {
+  width: 100%;
+  height: 100%;
+}
+
+main .container .topsong-item .info {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 24px;
+}
+
+main .container .topsong-item .info h4 {
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+main .container .topsong .listsongof {
+  width: 100%;
+  height: 44%;
+}
+
+main .container .topsong .listsongof .title {
+  font-size: 2rem;
+  padding: 16px 0;
+}
+
+main .container .topsong .listsongof-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  overflow-x: scroll;
+  gap: 24px;
+}
+
+main .container .topsong .listsongof-item {
+  min-width: 135px;
+  height: 135px;
+  max-height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+main .container .topsong .listsongof-item .image {
+  width: 100%;
+  height: 85%;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+main .container .topsong .listsongof-item .image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+main .container .topsong .listsongof-item .name {
+  height: 15%;
+  line-height: 1.6rem;
+  margin-top: 4px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  /* number of lines to show */
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.playerBar {
+  height: 12vh;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #efeff8;
+  -webkit-box-shadow: 0px 0px 16px 1px #ccc;
+          box-shadow: 0px 0px 16px 1px #ccc;
+}
+
+.playerBar-item {
+  width: 15%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.playerBar-item .thumbnail {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.playerBar-item .thumbnail img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.playerBar-item .info .songname {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.playerBar-item .info .author {
+  margin-top: 6px;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.playerBar-action {
+  width: 50%;
+}
+
+.playerBar-action .rangeBar {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 4px;
+  margin-top: 12px;
+}
+
+.playerBar-action .rangeBar input {
+  width: 80%;
+  height: 3px;
+  border: none;
+  outline: none;
+}
+
+.playerBar-action-icon {
+  font-size: 2.4rem;
+  margin: 0 28px;
+  cursor: pointer;
+}
+
+.playerBar-action-icon.random, .playerBar-action-icon.replay {
+  font-weight: 500;
+  font-size: 2rem;
+  color: #999;
+}
+
+.playerBar-action-icon.random.active, .playerBar-action-icon.replay.active {
+  color: #1ed760;
+}
+
+.playerBar-action .action {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.playerBar-action .action .pause {
+  color: #1ed760;
+  font-size: 3.6rem;
+  cursor: pointer;
+}
+
+.playerBar-volume {
+  width: 15%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.playerBar-volume .volume {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.playerBar-volume .volume-icon {
+  cursor: pointer;
+}
+
+.playerBar-volume .volume input {
+  height: 4px;
+  margin-left: 4px;
+  cursor: pointer;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin-reverse {
+  0% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+@keyframes spin-reverse {
+  0% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+@media (max-width: 480px) {
+  main .left,
+  main .right {
+    display: none;
+  }
+  main .container {
+    padding: 16px;
+    width: 100%;
+    overflow-y: auto;
+  }
+  main .container .topsong {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    margin-bottom: unset;
+  }
+  main .container .topsong-wrapper {
+    height: auto;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  main .container .topsong-wrapper .image {
+    width: 60vw;
+    height: 60vw;
+  }
+  main .container .topsong-list {
+    margin-top: 12px;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+  }
+  main .container .topsong .listsongof {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding-bottom: 9px;
+  }
+  .playerBar-item .info {
+    display: none;
+  }
+  .playerBar-action {
+    width: 80%;
+  }
+  .playerBar-action .rangeBar input {
+    width: 65%;
+  }
+  .playerBar-volume {
+    display: none;
+  }
+}
+/*# sourceMappingURL=style.css.map */

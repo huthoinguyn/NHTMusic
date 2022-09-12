@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="root">
+        <main>
+            <div class="left">
+                left
+            </div>
+            <div class="container">
+                <div class="searchBar">
+                    <input type="text" placeholder="Start search here">
+                </div>
+                <div class="topsong">
+                    <h3 class="title">Top song 2022</h3>
+                    <div class="topsong-wrapper">
+                        <div class="image">
+                            <img src="https://images.unsplash.com/photo-1662483820416-9cfac24f459b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+                                alt="">
+                        </div>
+                        <div class="topsong-list">
+
+                        </div>
+                    </div>
+                    <div class="listsongof">
+                        <h4 class="title">Top Song Of Singer</h4>
+                        <div class="listsongof-list">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                right
+            </div>
+        </main>
+        <div class="playerBar">
+            <div class="playerBar-item">
+                <div class="thumbnail">
+                    <img src="https://images.unsplash.com/photo-1662483820416-9cfac24f459b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+                        alt="thumbnail">
+                </div>
+                <div class="info">
+                    <h3 class="songname">Duong Thuong Dau</h3>
+                    <h4 class="author">Nguyen Huu Thoai</h4>
+                </div>
+            </div>
+            <div class="playerBar-action">
+                <div class="rangeBar">
+                    <div class="currTime">00:00</div>
+                    <input type="range" step="1" class="seekbar" value="0">
+                    <div class="durrTime">00:00</div>
+                </div>
+                <audio src="" class="songFile" preload="metadata" type="audio/ogg"></audio>
+                <div class="action">
+                    <div class="playerBar-action-icon random">
+                        <i class="fa-solid fa-shuffle"></i>
+                    </div>
+                    <div class="playerBar-action-icon prev">
+                        <i class="fa-solid fa-backward-step"></i>
+                    </div>
+                    <div class="pause">
+                        <i class="fa-solid fa-circle-play"></i>
+                    </div>
+                    <div class="playerBar-action-icon next">
+                        <i class="fa-solid fa-forward-step"></i>
+                    </div>
+                    <div class="playerBar-action-icon replay">
+                        <i class="fa-solid fa-repeat"></i>
+                    </div>
+                </div>
+                <!-- Action -->
+            </div>
+            <div class="playerBar-volume">
+                <div class="volume-icon"><i class="fa-solid fa-volume-high"></i></div>
+                <div class="volume"><input type="range" name="" value="100" id="volRange"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+
+    </script>
+</body>
+
+</html>
