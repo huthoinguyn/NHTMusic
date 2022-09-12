@@ -193,6 +193,66 @@ main {
       }
     }
   }
+
+  .right {
+    padding: 16px;
+    .title {
+      margin-bottom: 12px;
+      text-align: left;
+    }
+    .singer-list {
+      width: 100%;
+    }
+    .singer-item {
+      width: 100%;
+      padding: 9px;
+      border-radius: $radius;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      &.isPlaying {
+        background-color: $bg-white;
+      }
+    }
+    .singer-thumbnail {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      overflow: hidden;
+      border-radius: $radius;
+      margin-right: 16px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .singer-info {
+      text-align: left;
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: column;
+      .name {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 9px;
+      }
+      .song {
+        font-size: 14px;
+      }
+    }
+    .playing {
+      width: 20px;
+      height: 20px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
 }
 
 .playerBar {

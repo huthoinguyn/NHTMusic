@@ -259,6 +259,95 @@ main .container .topsong .listsongof-item .name {
   -webkit-box-orient: vertical;
 }
 
+main .right {
+  padding: 16px;
+}
+
+main .right .title {
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+main .right .singer-list {
+  width: 100%;
+}
+
+main .right .singer-item {
+  width: 100%;
+  padding: 9px;
+  border-radius: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+main .right .singer-item.isPlaying {
+  background-color: #fff;
+}
+
+main .right .singer-thumbnail {
+  width: 60px;
+  height: 60px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-right: 16px;
+}
+
+main .right .singer-thumbnail img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+main .right .singer-info {
+  text-align: left;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main .right .singer-info .name {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 9px;
+}
+
+main .right .singer-info .song {
+  font-size: 14px;
+}
+
+main .right .playing {
+  width: 20px;
+  height: 20px;
+}
+
+main .right .playing img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .playerBar {
   height: 12vh;
   width: 100%;

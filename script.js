@@ -1,7 +1,7 @@
 const $ = document.querySelector.bind(document),
   $$ = document.querySelectorAll.bind(document);
-let playing = true;
-var topSong = [
+let playing = false;
+let topSong = [
   {
     nameSong: "Anh sai rồi",
     nameArtist: "Sơn Tùng",
@@ -59,7 +59,7 @@ var topSong = [
     songId: 6,
   },
 ];
-var listSongOf = [
+let listSongOf = [
   {
     nameSong: "Khuôn mặt đáng thương",
     nameArtist: "Sơn Tùng mtp",
@@ -215,7 +215,33 @@ var listSongOf = [
     artist: "ducphuc",
   },
 ];
-
+let listArtist = [
+  {
+    name: "Sơn Tùng MTP",
+    artist: "sontung",
+    img: "sontung/lactroi.jpg",
+  },
+  {
+    name: "Đức Phúc",
+    artist: "ducphuc",
+    img: "ducphuc/ngaydautien.jpg",
+  },
+  {
+    name: "Trịnh Thăng Bình",
+    artist: "ttbinh",
+    img: "ttbinh/votan.jpg",
+  },
+  {
+    name: "Amee",
+    artist: "amee",
+    img: "amee/ava.webp",
+  },
+  {
+    name: "Đình Dũng",
+    artist: "dinhdung",
+    img: "dinhdung/ava.jpg",
+  },
+];
 let newListSong = [];
 const audio = $("audio.songFile");
 let indexSong = 0;
@@ -223,45 +249,55 @@ const app = {
   handleEvents: function () {
     const _this = this;
     this.currentSong(topSong, indexSong);
-    $(".action .pause").onclick = (e) => {
-      // _this.isPlaying();
-      $(".action .pause i").classList.toggle("fa-circle-pause");
-      if (!playing) {
-        if ($(".topsong .image").classList.contains("disable")) {
-          $(".topsong .image").classList.remove("disable");
-        }
-        $(".topsong .image").classList.add("active");
-        audio.play();
-        playing = true;
-      } else {
-        if ($(".topsong .image").classList.contains("active")) {
-          $(".topsong .image").classList.remove("active");
-        }
-        $(".topsong .image").classList.add("disable");
-        setTimeout(() => {
-          $(".topsong .image").classList.remove("disable");
-        }, 500);
-        audio.pause();
-        playing = false;
-      }
-    };
+    // $(".action .pause").onclick = (e) => {
+    //   // _this.isPlaying();
+    //   // $(".action .pause i").classList.toggle("fa-circle-pause");
+    //   // if (!playing) {
+    //   //   if ($(".topsong .image").classList.contains("disable")) {
+    //   //     $(".topsong .image").classList.remove("disable");
+    //   //   }
+    //   //   $(".topsong .image").classList.add("active");
+    //   //   audio.play();
+    //   //   playing = true;
+    //   // } else {
+    //   //   if ($(".topsong .image").classList.contains("active")) {
+    //   //     $(".topsong .image").classList.remove("active");
+    //   //   }
+    //   //   $(".topsong .image").classList.add("disable");
+    //   //   setTimeout(() => {
+    //   //     $(".topsong .image").classList.remove("disable");
+    //   //   }, 500);
+    //   //   audio.pause();
+    //   //   playing = false;
+    //   // }
+    // };
     $(".action .next").onclick = (e) => {
       indexSong++;
       if (indexSong > topSong.length - 1) {
         indexSong = 0;
       }
-      _this.currentSong(indexSong);
+      [...$$(".topsong-item")][indexSong].scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+      _this.currentSong(topSong, indexSong);
+      playing = true;
+      _this.play(playing);
       _this.isPlaying(indexSong);
-      audio.play();
     };
     $(".action .prev").onclick = (e) => {
       indexSong--;
       if (indexSong < 0) {
         indexSong = topSong.length - 1;
       }
-      _this.currentSong(indexSong);
+      [...$$(".topsong-item")][indexSong].scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+      _this.currentSong(topSong, indexSong);
+      playing = true;
+      _this.play(playing);
       _this.isPlaying(indexSong);
-      audio.play();
     };
     $(".action .random").onclick = () => {
       $(".action .random").classList.toggle("active");
@@ -283,8 +319,6 @@ const app = {
     $$(".topsong-item").forEach((item, i) => {
       item.onclick = () => {
         indexSong = i;
-        _this.currentSong(topSong, indexSong);
-        audio.play();
         [...$$(".topsong-item")].map((i, ind) => {
           ind += 1;
           i.classList.remove("isPlaying");
@@ -293,6 +327,10 @@ const app = {
         item.classList.add("isPlaying");
         item.querySelector(".order").innerHTML =
           '<img src="./icon/wave.gif" />';
+        _this.currentSong(topSong, indexSong);
+        playing = true;
+        _this.play(playing);
+        // audio.play();
       };
     });
     // Listsongof
@@ -305,6 +343,8 @@ const app = {
           i.querySelector(".order").innerHTML = ind;
         });
         _this.currentSong(newListSong, indexSong);
+        playing = true;
+        _this.play(playing);
       };
     });
     audio.onended = () => {
@@ -316,6 +356,25 @@ const app = {
       audio.play();
     };
 
+    // Singer
+    // [...$$(".singer-item")][0].classList.add("isPlaying");
+    // [...$$(".singer-item")][0].querySelector(".playing").innerHTML =
+    //   '<img src="./icon/wave.gif" />';
+    $$(".singer-item").forEach((item, artIndex) => {
+      item.onclick = () => {
+        // indexSong = i;
+        [...$$(".singer-item")].map((i) => {
+          i.classList.remove("isPlaying");
+          i.querySelector(".playing").innerHTML = "";
+        });
+        item.classList.add("isPlaying");
+        item.querySelector(".playing").innerHTML =
+          '<img src="./icon/wave.gif" />';
+        newListSong = [];
+        _this.listMusicOf(listArtist[artIndex].artist);
+        // _this.currentSong(newListSong, indexSong);
+      };
+    });
     // Seekbar
     $(".seekbar").onseeking = () => {
       audio.currentTime = this.value;
@@ -335,6 +394,35 @@ const app = {
       }
     };
   },
+  play: function (bool) {
+    $(".action .pause").onclick = (e) => {
+      if (!bool) {
+        this.play(!bool);
+        bool = true;
+      } else {
+        this.play(!bool);
+        bool = false;
+      }
+    };
+    if (bool) {
+      $(".action .pause i").classList.add("fa-circle-pause");
+      if ($(".topsong .image").classList.contains("disable")) {
+        $(".topsong .image").classList.remove("disable");
+      }
+      $(".topsong .image").classList.add("active");
+      audio.play();
+    } else {
+      $(".action .pause i").classList.remove("fa-circle-pause");
+      if ($(".topsong .image").classList.contains("active")) {
+        $(".topsong .image").classList.remove("active");
+      }
+      $(".topsong .image").classList.add("disable");
+      setTimeout(() => {
+        $(".topsong .image").classList.remove("disable");
+      }, 500);
+      audio.pause();
+    }
+  },
   isPlaying: function (indSong) {
     [...$$(".topsong-item")].map((i, ind) => {
       ind += 1;
@@ -342,18 +430,11 @@ const app = {
       i.querySelector(".order").innerHTML = ind;
     });
     $(".action .pause i").classList.add("fa-circle-pause");
-    audio.play();
     [...$$(".topsong-item")][indSong].classList.add("isPlaying");
     [...$$(".topsong-item")][indSong].querySelector(".order").innerHTML =
       '<img src="./icon/wave.gif" />';
     this.currentSong(indSong);
-  },
-  getDuration: function (src, destination) {
-    var audio = new Audio();
-    $(audio).on("loadedmetadata", function () {
-      destination.textContent = audio.duration;
-    });
-    audio.src = src;
+    this.play(playing);
   },
   render: function () {
     topSong.map((song, i) => {
@@ -362,7 +443,6 @@ const app = {
       let timeSong = 0;
       aud.onloadedmetadata = () => {
         timeSong = aud.duration;
-        console.log(timeSong);
       };
       aud.src = "musics/" + song.nameFile;
       const template = `
@@ -380,8 +460,25 @@ const app = {
           `;
       $(".topsong-list").insertAdjacentHTML("beforeend", template);
     });
+    listArtist.map((art) => {
+      const singerTemplate = `
+      <div class="singer-item">
+      <div class="singer-thumbnail">
+      <img src="./img/${art.img}" alt="">
+      </div>
+      <div class="singer-info">
+      <div class="name">${art.name}</div>
+      <div class="song">50 songs</div>
+      </div>
+      <div class="playing"></div>
+      </div>
+      `;
+
+      $(".singer-list").insertAdjacentHTML("beforeend", singerTemplate);
+    });
   },
   listMusicOf: function (artist) {
+    $(".listsongof-list").innerHTML = "";
     listSongOf.map((song) => {
       if (song.artist == artist) {
         newListSong.push(song);
@@ -399,6 +496,7 @@ const app = {
                     `;
       $(".listsongof-list").insertAdjacentHTML("beforeend", template);
     });
+    this.handleEvents();
   },
   currentSong: function (songArr, indexNumb) {
     $(".topsong-wrapper .image img").src = `./img/${songArr[indexNumb].img}`;
@@ -428,6 +526,7 @@ const app = {
     };
   },
   start: function () {
+    this.play(playing);
     this.render();
     this.listMusicOf("sontung");
     this.handleEvents();
